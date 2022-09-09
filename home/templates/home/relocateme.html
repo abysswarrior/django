@@ -1,0 +1,46 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+	<section class="inner-banner" style="background:#242c36 url(https://thumbs.dreamstime.com/b/world-map-full-white-color-big-size-84314437.jpg) no-repeat">
+		<div class="container">
+			<div class="caption">
+				<h2>Relocate.me</h2>
+				<p>All Jobs Related to Python Back-End Technologies</p>
+                <strong>Total {{ total_job_count }} jobs</strong>
+			</div>
+		</div>
+	</section>
+
+    <section class="jobs">
+			<div class="container">
+				<div class="companies">
+                    {% for job in jobs_list %}
+                    <div class="company-list">
+						<div class="row">
+							<div class="col-md-2 col-sm-2">
+								<div class="company-logo">
+									<img src="{{ job.logo }}" class="img-responsive" alt="" />
+								</div>
+							</div>
+							<div class="col-md-10 col-sm-10">
+								<div class="company-content">
+									<a href="{{ job.link }}"><h3>{{ job.title }}<span class="full-time">{{ job.relocation_type }}</span></h3></a>
+									<p><span class="company-name"><i class="fa fa-briefcase"></i> {{ job.company }} </span>
+                                        <span class="company-location"><i class="fa fa-map-marker"></i> {{ job.location }} </span>
+                                        <span class="package"><i class="fa fa-tags"></i> {{ job.tags|join:", " }} </span>
+                                    </p>
+									<p> {{ job.preview }}
+                                    </p>
+								</div>
+							</div>
+						</div>
+					</div>
+                    {% endfor %}
+
+				</div>
+			</div>
+		</section>
+
+{% endblock %}
